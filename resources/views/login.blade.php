@@ -8,15 +8,39 @@
         <div class="w-full">
             <p class="text-sm text-white mb-2 font-medium text-center">Painel administrativo GeA Habblive</p>
 
-            <form action="" class="card">
+            <form action="{{ route("session.store") }}" method="POST" class="card">
                 @csrf
+
+                @error("nickname")
+                    <span class="error-alert">{{ $message }}</span>
+                @enderror
                 <label class="block mb-2">
                     <span class="sr-only">Nickname</span>
-                    <input type="text" class="text-input" placeholder="Nickname">
+                    <input
+                        type="text"
+                        class="text-input"
+                        placeholder="Nickname"
+                        name="nickname"
+                        id="nickname"
+                        value="{{ old("nickname") }}"
+                        @error("nickname") data-invalid="true" @enderror
+                    />
                 </label>
+
+                @error("password")
+                    <span class="error-alert">{{ $message }}</span>
+                @enderror
                 <label class="block mb-4">
                     <span class="sr-only">Senha</span>
-                    <input type="password" class="text-input" placeholder="Senha">
+                    <input
+                        type="password"
+                        class="text-input"
+                        placeholder="Senha"
+                        name="password"
+                        id="password"
+                        value="{{ old("password") }}"
+                        @error("password") data-invalid="true" @enderror
+                    />
                 </label>
 
                 <button type="submit" class="btn w-full">Entrar</button>
