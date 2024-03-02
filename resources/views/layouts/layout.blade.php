@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GeA Admin • Login</title>
+        <title>@yield("page-title") • GeA</title>
+        <meta name="description" content="Painel administrativo dos Gamers em Ação do Habblive Hotel.">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
