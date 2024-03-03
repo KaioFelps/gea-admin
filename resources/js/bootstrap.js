@@ -5,9 +5,13 @@
  */
 
 import axios from 'axios';
+import * as floatingUi from "@floating-ui/dom";
+
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.floating = floatingUi;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
