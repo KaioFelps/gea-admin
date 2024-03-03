@@ -2,44 +2,60 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as AuthenticableModel;
 
-class User extends Authenticatable
+class User extends AuthenticableModel
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'pontos_gea' => 0,
+        'active' => true,
+    ];
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
+        'nickname',
         'password',
+        'pontos_gea',
+        'role',
+        'active',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * Overwrite some attributes
+     * 
+     * @var string
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $pontos = "pontos_gea";
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    public function getPontosAttribute() {
+        return $this->attributes["pontos_gea"];
+    }
+
+    protected $append= ["pontos"];
+
+    protected $hideen = ["pontos_gea"];
+
+    // id            
+    // remember_token
+    // created_at
+    // updated_at
 }
