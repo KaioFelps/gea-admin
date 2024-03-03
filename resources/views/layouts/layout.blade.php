@@ -1,3 +1,7 @@
+@php
+    $user = auth()->user();
+@endphp
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -15,12 +19,24 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="fixed inset-0 flex flex-col items-center justify-center">            
-            @yield("page")
+        <x-header :user="$user"/>
 
-            <footer class="max-w-96 mx-auto w-[calc(100%_-_24px)] mt-12">
-                <p class="text-white/70 font-medium text-sm text-center">GeA Habblive © 2024 Todos os direitos reservados.Desenvolvido por <a href="https://github.com/KaioFelps" target="_blank" class="text-blue-500 font-bold">Kaio Felipe</a>.</p>
-            </footer>
+        <div>
+            <aside>
+
+            </aside>
+
+            <div>
+                @yield("page")
+
+                <footer class="w-full mt-12 p-6 gap-6">
+                    <p class="text-base font-medium text-gray-400">Painel administrativo da GeA Habblive. Todos os direitos reservados.</p>
+                    <p class="text-base font-medium text-gray-400">Desenvolvido por Kaio Felipe</p>
+                </footer>
+            </div>
         </div>
+
+        @stack("floatings")
+        @stack("scripts")
     </body>
 </html>
