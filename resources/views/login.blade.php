@@ -8,6 +8,10 @@
         <div class="w-full">
             <p class="text-sm text-white mb-2 font-medium text-center">Painel administrativo GeA Habblive</p>
 
+            @error("error")
+                <span class="error-alert">{{ $message }}</span> 
+            @enderror
+
             <form action="{{ route("session.store") }}" method="POST" class="card">
                 @csrf
 
