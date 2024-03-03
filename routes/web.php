@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +22,9 @@ Route::controller(SessionController::class)->group(function () {
 Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::get('/', function() {
         return view("home");
-    })->name("home")->middleware("auth");
+    })->name("home");
+
+    Route::controller(UserController::class)->group(function() {
+        Route::get('/users/new', "create")->name("user.create");
+    });
 });
