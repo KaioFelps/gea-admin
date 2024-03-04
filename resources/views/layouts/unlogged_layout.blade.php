@@ -11,7 +11,13 @@
         <link href="https://fonts.bunny.net/css?family=roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
 
         <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @env("local")
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @endenv
+        @env(["staging", "production"])
+            <link rel="stylesheet" href="{{asset("build/assets/app-13xvER2e.css")}}">
+            <script src="{{asset("build/assets/app-BJ-e0X5y.js")}}"></script>
+        @endenv
     </head>
     <body class="antialiased">
         <div class="fixed inset-0 flex flex-col items-center justify-center">            
