@@ -5,5 +5,9 @@ Início
 @endsection
 
 @section("page")
-    <h1>logado</h1>
+
+<main class="flex-1">
+    <h1>Home</h1>
+</main>
+
 @endsection
