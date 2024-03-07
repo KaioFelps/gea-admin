@@ -34,6 +34,33 @@
     .error-alert {
         @apply block font-normal text-sm text-red-200 px-2.5 py-[5px] rounded-[4px] bg-red-200/10 mb-2 mt-3
     }
+
+    .sidebar-separator {
+        @apply px-6 py-2 bg-gray-1000 border-t border-b border-solid border-black text-white/50 text-sm
+    }
+
+    .sidebar-item {
+        @apply relative px-4 py-3 flex flex-row gap-3 items-center w-full
+    }
+    
+    .sidebar-item-arrow {
+        @apply absolute right-4 top-1/2 -translate-y-1/2 w-[22px] h-[22px] flex items-center justify-center pointer-events-none
+    }
+
+    /* ACCORDION /////////////////////// */
+
+    .sidebar-accordion-wrapper {
+        @apply overflow-hidden
+    }
+
+    .sidebar-accordion-collapsing {
+        @apply transition-all
+    }
+
+    .sidebar-accordion.sidebar-accordion-collapsed {
+        height: var(--full-height) !important;
+        overflow: hidden;
+    }
 }
 
 @layer utilities {
