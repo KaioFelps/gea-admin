@@ -24,18 +24,16 @@
             <script src="{{asset("build/assets/app-BJ-e0X5y.js")}}"></script>
         @endenv
     </head>
-    <body class="antialiased">
+    <body class="antialiased min-h-screen flex flex-col">
         <x-header :user="$user"/>
 
-        <div>
-            <aside>
+        <div class="flex flex-1">
+            <x-sidebar :user="$user" />
 
-            </aside>
-
-            <div>
+            <div class="flex-1 flex flex-col gap-12">
                 @yield("page")
 
-                <footer class="w-full mt-12 p-6 gap-6">
+                <footer class="w-full p-6 gap-6 flex flex-row items-center justify-between bg-gray-800 border-t border-t-white/10">
                     <p class="text-base font-medium text-gray-400">Painel administrativo da GeA Habblive. Todos os direitos reservados.</p>
                     <p class="text-base font-medium text-gray-400">Desenvolvido por Kaio Felipe</p>
                 </footer>
