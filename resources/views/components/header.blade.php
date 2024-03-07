@@ -3,7 +3,11 @@
 
     <button
         id="user-dropdown-target"
-        class="px-3 py-1.5 rounded-lg border border-white/25 flex items-center justify-center gap-4 text-sm text-white font-bold"
+        class="
+        px-3 py-1.5 rounded-lg border border-white/25 flex items-center justify-center gap-4 text-sm text-white font-bold transition-all cursor-default
+        hover:bg-white/5
+        active:bg-white/10
+        "
     >
         <img src="{{ asset("images/pixelated-id.png") }}" alt="carteira de identidade em pixel arte">
 
@@ -24,7 +28,7 @@
         <a
             href="{{route("session.logout")}}"
             class="
-            rounded-lg px-3 py-1 bg-white/10 flex flex-row gap-3 items-center text-sm font-bold text-white w-full transition-all
+            rounded-lg px-3 py-1 bg-white/10 flex flex-row gap-3 items-center text-sm font-bold text-white w-full transition-all cursor-default
             hover:bg-white/15
             active:bg-white/20
             outline-0 outline-white/5
