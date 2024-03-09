@@ -25,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("user");
+        $this->authorize("create", User::class);
+        return view("membro_novo");
     }
 
     /**
@@ -33,20 +34,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->user()->cannot("create", User::class)) {
+            return back()->withErrors(["error" => "Você não tem permissão para criar um novo usuário."]);
+        }
+
         $roles = [RoleEnum::Gestor, RoleEnum::Staff, RoleEnum::Mestre, RoleEnum::Arquiteto, RoleEnum::PixelArtista, RoleEnum::Programador];
-        $roles = join(",", $roles);
+        $roles_joined = join(",", $roles);
+        $roles_joined_with_space = join(", ", $roles);
 
         $request->validate([
-            "nickname" => "required|regex:/^[a-zA-Z0-9\-_:@?]+$/",
+            "nickname" => "required|regex:/^[a-zA-Z0-9\-_:@\.?]+$/",
             "password" => "required|min:5",
-            "role" => "required|in:$roles"
+            "role" => "required|in:$roles_joined"
         ], [
             "nickname.required" => "Nickname é um campo obrigatório.",
-            "nickname.regex" => "O nome do usuário só pode conter de letras sem acentuações, números e os símbolos -, _, ?, :. (:regex)",
+            "nickname.regex" => "O nome do usuário só pode conter de letras sem acentuações, números e os símbolos '-', '_', '?', ':', '.', '@'.",
             "password.required" => "Senha é um campo obrigatório.",
             "password.min" => "A senha deve ter no mínimo :min caracteres.",
             "role.required" => "Cargo é um campo obrigatório.",
-            "role.in" => "O cargo deve ser um dos listados: $roles.",
+            "role.in" => "O cargo deve ser um dos listados: $roles_joined_with_space.",
         ]);
 
         $user = User::firstWhere("nickname", $request->input("nickname"));
@@ -64,7 +70,7 @@ class UserController extends Controller
 
         $user = User::create($credencials);
 
-        return redirect()->route("user.create")->isSuccessful(true);
+        return redirect()->route("user.create")->with(["success" => "Usuário " . $credencials["nickname"] . " criado com sucesso!"]);
     }
 
     /**

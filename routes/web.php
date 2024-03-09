@@ -25,6 +25,6 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     })->name("home");
 
     Route::controller(UserController::class)->group(function() {
-        Route::get('/users/new', "create")->name("user.create");
+        Route::get('/membros/novo', "create")->name("user.create");
     });
 });
