@@ -31,7 +31,9 @@
             <x-sidebar :user="$user" />
 
             <div class="flex-1 flex flex-col gap-12">
-                @yield("page")
+                <main class="w-[calc(100%_-_24px)] max-w-[952px] mx-auto mt-20 flex-1">
+                    @yield("page")
+                </main>
 
                 <footer class="w-full p-6 gap-6 flex flex-row items-center justify-between bg-gray-800 border-t border-t-white/10">
                     <p class="text-base font-medium text-gray-400">Painel administrativo da GeA Habblive. Todos os direitos reservados.</p>
