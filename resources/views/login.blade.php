@@ -9,14 +9,14 @@
             <p class="text-sm text-white mb-2 font-medium text-center">Painel administrativo GeA Habblive</p>
 
             @error("error")
-                <span class="error-alert">{{ $message }}</span> 
+                <span class="alert error mb-2 mt-3">{{ $message }}</span> 
             @enderror
 
             <form action="{{ route("session.store") }}" method="POST" class="card" id="login-form">
                 @csrf
 
                 @error("nickname")
-                    <span class="error-alert">{{ $message }}</span>
+                    <span class="alert error mb-2 mt-3">{{ $message }}</span>
                 @enderror
                 <label class="block mb-2">
                     <span class="sr-only">Nickname</span>
@@ -32,7 +32,7 @@
                 </label>
 
                 @error("password")
-                    <span class="error-alert">{{ $message }}</span>
+                    <span class="alert error mb-2 mt-3">{{ $message }}</span>
                 @enderror
                 <label class="block mb-4">
                     <span class="sr-only">Senha</span>
