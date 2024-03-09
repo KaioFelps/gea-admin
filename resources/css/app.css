@@ -71,15 +71,16 @@
     /* SIDEBAR ACCORDION /////////////////////// */
 
     .sidebar-accordion-wrapper {
-        @apply overflow-hidden
+        @apply overflow-hidden h-[var(--full-height)]
     }
 
     .sidebar-accordion-collapsing {
         @apply transition-all
     }
 
-    .sidebar-accordion.sidebar-accordion-collapsed {
-        height: var(--full-height) !important;
+    .sidebar-accordion-wrapper.sidebar-accordion-collapsed,
+    .sidebar-accordion-collapsed {
+        height: 0;
         overflow: hidden;
     }
 }

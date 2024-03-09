@@ -2,15 +2,16 @@ const sidebarAccordions = document.querySelectorAll(".sidebar-accordion");
 
 function toggleAccordion(accordion, wrapper, trigger) {
     const TIMEOUT = 2000;
+    const COLLAPSED_CLASS = "sidebar-accordion-collapsed";
 
-    if (wrapper.style.height === "var(--full-height)") {
+    if (!wrapper.classList.contains(COLLAPSED_CLASS)) {
         wrapper.classList.add("sidebar-accordion-collapsing");
 
         setTimeout(() => {
             wrapper.classList.remove("sidebar-accordion-collapsing");
         }, TIMEOUT);
 
-        wrapper.style.height = "0";
+        wrapper.classList.add(COLLAPSED_CLASS);
         trigger.setAttribute("data-state", "inactive");
     } else {
         wrapper.classList.add("sidebar-accordion-collapsing");
@@ -19,14 +20,12 @@ function toggleAccordion(accordion, wrapper, trigger) {
             wrapper.classList.remove("sidebar-accordion-collapsing");
         }, TIMEOUT);
 
-        wrapper.style.height = "var(--full-height)";
+        wrapper.classList.remove(COLLAPSED_CLASS);
         trigger.setAttribute("data-state", "active");
     }
 }
 
 function calculateHeightVariables(accordion) {
-    const trigger = accordion.querySelector(".sidebar-accordion-trigger");
-    const wrapper = accordion.querySelector(".sidebar-accordion-wrapper");
     const content = accordion.querySelector(".sidebar-accordion-content");
 
     const contentHeight = content.offsetHeight;
