@@ -18,12 +18,13 @@
     }
 
     .btn {
-        @apply flex items-center justify-center px-9 py-3 rounded-[4px] bg-blue-600 shadow-[0_0_0_1px_inset] shadow-blue-500 transition-all
+        @apply flex items-center justify-center px-9 py-3 rounded-[4px] bg-blue-600 shadow-[0_0_0_1px_inset] shadow-blue-500 transition-all cursor-default
         font-medium text-base text-white
         outline-blue-500/25 outline-0
         focus:outline-4
         hover:brightness-105
         active:brightness-95
+        data-[loading=true]:opacity-60
     }
 
     .text-input {

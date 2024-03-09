@@ -44,5 +44,16 @@
 
         @stack("floatings")
         @stack("scripts")
+        
+        <script>
+            document.querySelectorAll("form")
+            .forEach(form => {
+                form.addEventListener("submit", (e) => {
+                    const submitButton = e.target.querySelector("button[type=submit]");
+                    submitButton.setAttribute("data-loading", "true");
+                    submitButton.disabled = true;
+                })
+            })
+        </script>
     </body>
 </html>
