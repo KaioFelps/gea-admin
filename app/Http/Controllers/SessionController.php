@@ -16,12 +16,11 @@ class SessionController extends Controller
     public function store(Request $request) {
         $request->validate([
             "nickname" => "bail|required|string",
-            "password" => "required|min:5"
+            "password" => "required"
         ], [
             "nickname.required" => "Digite seu nickname para logar.",
             "nickname.string" => "Digite um nickname válido.",
             "password.required" => "Digite sua senha para logar.",
-            "password.min" => "A senha deve ser maior que :min caracteres."
         ]);
 
         $credentials = $request->only("nickname", "password");
