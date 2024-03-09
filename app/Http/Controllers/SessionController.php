@@ -42,12 +42,15 @@ class SessionController extends Controller
             return redirect()->route("user.create")->withErrors(["error" => "Usuário com nickname já existe."]);
         }
 
-        Auth::login($user, true);
+        Auth::login($user, false);
         return redirect()->route("home");
     }
 
-    public function destroy() {
+    public function destroy(Request $request) {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route("session.login");
     }
 }
