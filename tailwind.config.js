@@ -15,6 +15,8 @@ export default {
       "blue-500": "#238BC6",
 
       "purple-600": "#8100A9",
+
+      "green-500": "#30C22D",
       
       "yellow-500": "#FFAA00",
 

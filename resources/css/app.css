@@ -6,6 +6,10 @@
     body {
         @apply bg-gray-800
     }
+
+    form label {
+        @apply text-sm font-medium text-white
+    }
 }
 
 @layer components {
@@ -23,7 +27,7 @@
     }
 
     .text-input {
-        @apply p-4 rounded-lg bg-white/5 shadow-[0_0_0_1px_inset] shadow-white/15 w-full transition-all
+        @apply px-4 py-3 rounded-lg bg-white/5 shadow-[0_0_0_1px_inset] shadow-white/15 w-full transition-all leading-tight
         placeholder:text-gray-350 text-white
         outline-0 outline-theme-primary/25
         focus:outline-4 focus:outline-theme-primary/25
@@ -31,8 +35,20 @@
         data-[invalid=true]:shadow-red-200
     }
 
-    .error-alert {
-        @apply block font-normal text-sm text-red-200 px-2.5 py-[5px] rounded-[4px] bg-red-200/10 mb-2 mt-3
+    .alert {
+        @apply block font-normal text-sm text-blue-500 px-2.5 py-[5px] rounded-[4px] bg-blue-500/10
+    }
+
+    .alert.error {
+        @apply text-red-200 bg-red-200/10
+    }
+
+    .alert.success {
+        @apply text-green-500 bg-green-500/10
+    }
+
+    .page-title {
+        @apply font-black text-xl text-white uppercase
     }
 
     /* SIDEBAR ///////////////////////////////// */
