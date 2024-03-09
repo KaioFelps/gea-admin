@@ -1,5 +1,16 @@
+@php
+    $get_links_paths = function($link) {
+        return $link->href;
+    };
+
+    $links_paths = array_map($get_links_paths, $links);
+@endphp
+
 <div class="sidebar-accordion">
-    <button data-state="inactive" class="sidebar-accordion-trigger sidebar-item group">
+    <button
+    data-state=@if(!in_array(Request::url(), $links_paths)) {{"inactive"}} @else {{"active"}} @endif
+    class="sidebar-accordion-trigger sidebar-item group"
+    >
         <img src="{{$icon}}" alt="">
         <span class="font-bold text-sm text-white uppercase">{{$title}}</span>
 
@@ -8,7 +19,13 @@
         </div>
     </button>
 
-    <div class="sidebar-accordion-wrapper sidebar-accordion-collapsed" style="height: 0;">
+    <div
+    @if(!in_array(Request::url(), $links_paths))
+        class="sidebar-accordion-wrapper sidebar-accordion-collapsed"
+    @else
+        class="sidebar-accordion-wrapper"
+    @endif
+    >
         <div class="sidebar-accordion-content flex flex-col p-3 bg-gray-1000">
             @foreach ($links as $link)
                 @if (!$link->allowed_roles || in_array($userRole, $link->allowed_roles))
