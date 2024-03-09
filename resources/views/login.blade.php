@@ -12,7 +12,7 @@
                 <span class="error-alert">{{ $message }}</span> 
             @enderror
 
-            <form action="{{ route("session.store") }}" method="POST" class="card">
+            <form action="{{ route("session.store") }}" method="POST" class="card" id="login-form">
                 @csrf
 
                 @error("nickname")
@@ -47,8 +47,19 @@
                     />
                 </label>
 
-                <button type="submit" class="btn w-full">Entrar</button>
+                <button type="submit" class="btn w-full cursor-default data-[loading=true]:opacity-60 transition-opacity">Entrar</button>
             </form>
         </div>
     </main>
 @endsection
+
+@push("scripts")
+    <script>
+        document.getElementById("login-form")
+        .addEventListener("submit", (e) => {
+            const submitButton = e.target.querySelector("button[type=submit]");
+            submitButton.setAttribute("data-loading", "true");
+            submitButton.disabled = true;
+        })
+    </script>
+@endpush

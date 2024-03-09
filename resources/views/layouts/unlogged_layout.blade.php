@@ -27,5 +27,7 @@
                 <p class="text-white/70 font-medium text-sm text-center">GeA Habblive © 2024 Todos os direitos reservados.Desenvolvido por <a href="https://github.com/KaioFelps" target="_blank" class="text-blue-500 font-bold">Kaio Felipe</a>.</p>
             </footer>
         </div>
+
+        @stack("scripts")
     </body>
 </html>
